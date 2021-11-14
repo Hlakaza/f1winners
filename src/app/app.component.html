@@ -2,6 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+            <mat-spinner class="mt-3" *ngIf="loading"></mat-spinner>
             <mat-accordion>
                 <mat-expansion-panel class="mt-3" *ngFor="let item of seasons" (opened)="getRaces(item.season)">
                     <mat-expansion-panel-header>
@@ -9,19 +10,36 @@
                            <b>{{item?.season}}</b> 
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <mat-card class="mb-1" *ngFor="let race of races">
-                        <b>{{race.raceName}} - Winner</b>
-                        <br>
-                        <ng-container *ngFor="let winner of race.Results">
-                            <diV class="row" >
-                                <div class="col">{{winner | json}}</div>
-                            </diV>
-                        </ng-container>
-                        
-                    </mat-card>
+                    <mat-spinner *ngIf="loadingResults[item.season]"></mat-spinner>
+                    <ng-container *ngIf="!loadingResults[item.season]">
+                        <mat-card  class="mb-2" *ngFor="let race of races">
+                            <b>{{race.raceName}} - Winner</b>
+                            <hr>
+                            <ng-container *ngFor="let winner of race.Results">
+                                <diV class="row" *ngIf="winner.position === '1'">
+                                    <div class="col-sm">
+                                        <b>Driver</b> <br>
+                                        {{winner.Driver.givenName}}&nbsp;
+                                        {{winner.Driver.familyName}}
+                                    </div>
+                                    <div class="col-sm">
+                                        <b>Laps</b><br>
+                                        {{winner.laps}}
+                                    </div>
+                                    <div class="col-sm">
+                                        <b>Status</b><br>
+                                        {{winner.status}}
+                                    </div>
+                                    <div class="col-sm">
+                                        <b>Points</b><br>
+                                        {{winner.points}}
+                                    </div>
+                                </diV>
+                            </ng-container>
+                        </mat-card>
+                    </ng-container>
                 </mat-expansion-panel>
             </mat-accordion>
-
         </div>
     </div>
 </div>

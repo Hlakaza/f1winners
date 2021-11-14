@@ -59,7 +59,7 @@
  */
 import 'zone.js';  // Included with Angular CLI.
 
-
+(window as any).__Zone_enable_cross_context_check = true;
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */

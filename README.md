@@ -1,10 +1,16 @@
-# Ergast
+# F1 World Champions
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
 
+## Required
+- Make sure you have node installed, Download from [NodeJS](https://nodejs.org/en/)
+- Install angular cli `npm i -g @angular/cli`
+
+## Dependencies
+Run `npm install` to download all dependencies
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
